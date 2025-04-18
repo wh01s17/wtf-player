@@ -1,23 +1,45 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { getResults } from '../../services/youtube'
+import { YouTubeApiResponse, YouTubeVideo } from '@/types/youtube'
 
 export const Results = ({ params }: { params: string }) => {
-    const [results, setResults] = useState([])
+    const [results, setResults] = useState<YouTubeVideo[]>([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState('')
 
     useEffect(() => {
-        getResults(params)
-    }, [])
+        const fetchResults = async () => {
+            try {
+                setLoading(true)
+                const data = await getResults(params) as YouTubeApiResponse
+                setResults(data.items || [])
+            } catch (err) {
+                setError('Error al cargar los resultados')
+                console.error(err)
+            } finally {
+                setLoading(false)
+            }
+        }
 
-    if (!results) return null
+        if (params) {
+            fetchResults()
+        }
+    }, [params])
+
+    if (loading) return <div>Cargando...</div>
+    if (error) return <div>{error}</div>
+    if (results.length === 0) return <div>No se encontraron resultados</div>
 
     return (
         <div>
             <ul>
                 {
-                    results.map(res => {
-                        return <li>{res}</li>
-                    })
+                    results.map(video => (
+                        <li key={video.id.videoId}>
+                            {video.snippet.title}
+                        </li>
+                    ))
                 }
             </ul>
         </div>
