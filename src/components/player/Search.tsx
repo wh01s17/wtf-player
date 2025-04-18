@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { Results } from './Results'
+import { Button } from '../ui/button'
 
 export const Search = () => {
     const [search, setSearch] = useState('')
@@ -13,26 +14,26 @@ export const Search = () => {
         }
     }
     return (
-        <section className='flex flex-col gap-4 p-20'>
+        <section className='flex flex-col gap-4'>
             <form onSubmit={handleSubmit} className='flex flex-col gap-2'>
-                <div className="relative w-full max-w-md">
+                <div className="relative w-1/4 max-w-md">
                     <input
                         type="text"
                         name="search"
                         id="search"
                         placeholder="Buscar videos..."
                         aria-label="Buscar videos en YouTube"
-                        className='border w-full p-2 rounded-2xl pl-4'
+                        className='border w-full p-2 rounded-md pl-4'
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
                 </div>
-                <button
+                <Button
                     type="submit"
-                    className='border cursor-pointer max-w-md p-2 hover:bg-white hover:text-black rounded-2xl transition-colors'
+                    className='w-1/4 p-5 cursor-pointer'
                 >
                     Buscar
-                </button>
+                </Button>
             </form>
 
             {queryTerm && <Results params={queryTerm} />}
