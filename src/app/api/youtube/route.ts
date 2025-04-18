@@ -2,7 +2,7 @@ import { NextResponse, NextRequest } from "next/server"
 import axios from 'axios'
 
 const apiKey = process.env.YOUTUBE_API_KEY
-const baseUrl = 'https://www.googleapis.com/youtube/v3/search'
+const searchUrl = 'https://www.googleapis.com/youtube/v3/search'
 
 export async function GET(req: NextRequest) {
     const { searchParams } = req.nextUrl
@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
     }
 
     try {
-        const response = await axios.get(baseUrl, {
+        const response = await axios.get(searchUrl, {
             params: {
                 part: 'snippet',
                 type: 'video',
