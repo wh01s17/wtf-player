@@ -2,6 +2,7 @@ import React from 'react'
 import { ThemeToggle } from '../ui/ThemeToggle'
 import { PlaySquareIcon } from "lucide-react"
 import Link from 'next/link'
+import { Button } from '../ui/button'
 
 export const NavBar = () => {
     return (
@@ -11,7 +12,15 @@ export const NavBar = () => {
                 <PlaySquareIcon className="w-15 h-15" />
             </Link>
 
-            <ThemeToggle />
+            <div className='flex items-center justify-end w-fit'>
+                <div className="space-x-2 mr-5">
+                    <Button variant="outline">Iniciar sesión</Button>
+                    <Button>Registrarse</Button>
+                </div>
+                <ThemeToggle />
+            </div>
+
+
         </nav>
     )
 }

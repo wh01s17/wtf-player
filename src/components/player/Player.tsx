@@ -4,10 +4,10 @@ import { Video } from './Video'
 
 export const Player = () => {
     return (
-        <div className='p-20 flex'>
+        <section className='py-10 px-20 flex'>
             <Search />
             <Video />
-        </div>
+        </section>
 
     )
 }

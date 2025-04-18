@@ -37,13 +37,17 @@ export const Search = () => {
                 </div>
                 <Button
                     type="submit"
-                    className='w-1/2 p-4 cursor-pointer'
+                    className='w-1/2 p-4'
                 >
                     Buscar
                 </Button>
             </form>
 
-            {queryTerm && <Results params={queryTerm} />}
+            {
+                queryTerm && <div className='h-140 overflow-y-scroll mr-10 scrollbar-thin scrollbar-thumb-gray-100 scrollbar-track-black'>
+                    <Results params={queryTerm} />
+                </div>
+            }
         </section>
     )
 }
