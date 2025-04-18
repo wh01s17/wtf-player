@@ -7,7 +7,7 @@ import { useVideoStore } from '@/store/useVideoStore'
 import Image from 'next/image'
 
 export const Results = ({ params }: { params: string }) => {
-    const { setActiveVideoId } = useVideoStore()
+    const { playVideo } = useVideoStore() // Cambiar por la función que activa el video
     const [results, setResults] = useState<YouTubeVideo[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
@@ -21,7 +21,7 @@ export const Results = ({ params }: { params: string }) => {
 
                 // Opcional: Reproducir automáticamente el primer video
                 if (data.items && data.items.length > 0) {
-                    setActiveVideoId(data.items[0].id.videoId)
+                    playVideo(data.items[0].id.videoId) // Usar playVideo en lugar de setActiveVideoId
                 }
             } catch (err) {
                 setError('Error al cargar los resultados')
@@ -49,7 +49,7 @@ export const Results = ({ params }: { params: string }) => {
                             results.map(video => (
                                 <li
                                     key={video.id.videoId}
-                                    onClick={() => setActiveVideoId(video.id.videoId)}
+                                    onClick={() => playVideo(video.id.videoId)}
                                     className='cursor-pointer hover:bg-secondary p-2 rounded-lg transition-colors'
                                 >
                                     <div className="flex items-start gap-3">

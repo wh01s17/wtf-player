@@ -6,7 +6,7 @@ export const Video = () => {
     const { activeVideoId } = useVideoStore()
 
     return (
-        <section className='w-1/2 flex items-center justify-center'>
+        <section className='w-full h-full flex items-center justify-center'>
             <div className="aspect-video w-full">
                 {
                     activeVideoId.length > 0 && <iframe

@@ -17,7 +17,7 @@ export const ThemeToggle = () => {
     return (
         <div className="flex items-center gap-2">
             <Sun className={`w-7 h-7 ${isDark ? 'text-white' : 'text-black'}`} />
-            <Switch checked={isDark} onCheckedChange={setIsDark} />
+            <Switch checked={isDark} onCheckedChange={setIsDark} className="cursor-pointer" />
             <Moon className={`w-7 h-7 ${isDark ? 'text-white' : 'text-black'}`} />
         </div>
     )
