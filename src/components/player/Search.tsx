@@ -4,40 +4,38 @@ import { Results } from './Results'
 
 export const Search = () => {
     const [search, setSearch] = useState('')
-    const [activeSearch, setActiveSearch] = useState('')
-    const [showResults, setShowResults] = useState(false)
+    const [queryTerm, setQueryTerm] = useState('')
 
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value)
-        setShowResults(false)
-    }
-
-    const handleSubmit = () => {
-        if (search.trim()) {
-            setActiveSearch(search)
-            setShowResults(true)
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        if (search.trim().length > 0) {
+            setQueryTerm(search.trim())
         }
     }
-
     return (
-        <section className='flex flex-col gap-2 p-20'>
-            <input
-                type="text"
-                name="search"
-                id="search"
-                className='border w-1/4 p-2'
-                value={search}
-                onChange={handleSearch}
-                onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
-            />
-            <button
-                className='border cursor-pointer w-1/4 p-2 hover:bg-white hover:text-black'
-                onClick={handleSubmit}
-            >
-                Search
-            </button>
+        <section className='flex flex-col gap-4 p-20'>
+            <form onSubmit={handleSubmit} className='flex flex-col gap-2'>
+                <div className="relative w-full max-w-md">
+                    <input
+                        type="text"
+                        name="search"
+                        id="search"
+                        placeholder="Buscar videos..."
+                        aria-label="Buscar videos en YouTube"
+                        className='border w-full p-2 rounded-2xl pl-4'
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                </div>
+                <button
+                    type="submit"
+                    className='border cursor-pointer max-w-md p-2 hover:bg-white hover:text-black rounded-2xl transition-colors'
+                >
+                    Buscar
+                </button>
+            </form>
 
-            {showResults && <Results params={activeSearch} />}
+            {queryTerm && <Results params={queryTerm} />}
         </section>
     )
 }

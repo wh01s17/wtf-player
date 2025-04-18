@@ -1,7 +1,7 @@
-import { Search } from "@/components/player/Search"
+import { Player } from "@/components/player/Player"
 
 export default function Home() {
   return (
-    <Search />
+    <Player />
   )
 }

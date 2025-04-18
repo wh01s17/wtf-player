@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { getResults } from '../../services/youtube'
 import { YouTubeApiResponse, YouTubeVideo } from '@/types/youtube'
+import { Loading } from '../ui/Loading'
 
 export const Results = ({ params }: { params: string }) => {
     const [results, setResults] = useState<YouTubeVideo[]>([])
@@ -27,21 +28,24 @@ export const Results = ({ params }: { params: string }) => {
         }
     }, [params])
 
-    if (loading) return <div>Cargando...</div>
+    if (loading) return <Loading />
     if (error) return <div>{error}</div>
-    if (results.length === 0) return <div>No se encontraron resultados</div>
 
     return (
         <div>
-            <ul>
-                {
-                    results.map(video => (
-                        <li key={video.id.videoId}>
-                            {video.snippet.title}
-                        </li>
-                    ))
-                }
-            </ul>
+            {
+                results.length === 0
+                    ? <div>No se encontraron resultados</div>
+                    : <ul>
+                        {
+                            results.map(video => (
+                                <li key={video.id.videoId}>
+                                    {video.snippet.title}
+                                </li>
+                            ))
+                        }
+                    </ul>
+            }
         </div>
     )
 }
