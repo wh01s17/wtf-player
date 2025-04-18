@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Results } from './Results'
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
+import { Animation } from './Animation'
 
 export const Search = () => {
     const [search, setSearch] = useState('')
@@ -44,9 +45,11 @@ export const Search = () => {
             </form>
 
             {
-                queryTerm && <div className='h-140 overflow-y-scroll mr-10 scrollbar-thin scrollbar-thumb-gray-100 scrollbar-track-black'>
-                    <Results params={queryTerm} />
-                </div>
+                queryTerm
+                    ? <div className='h-140 overflow-y-scroll mr-10 scrollbar-thin scrollbar-thumb-gray-100 scrollbar-track-black'>
+                        <Results params={queryTerm} />
+                    </div>
+                    : <Animation />
             }
         </section>
     )
