@@ -6,7 +6,7 @@ export const Container = ({
     children: React.ReactNode
 }>) => {
     return (
-        <div className='p-20'>
+        <div className='p-20 flex'>
             {children}
         </div>
     )

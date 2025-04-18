@@ -1,15 +1,12 @@
 import React from 'react'
 import { Search } from './Search'
-import { ThemeToggle } from '../ui/ThemeToggle'
-import { Container } from '../layout/Container'
+import { Video } from './Video'
 
 export const Player = () => {
     return (
-        <div>
-            <ThemeToggle />
-            <Container>
-                <Search />
-            </Container>
+        <div className='p-20 flex'>
+            <Search />
+            <Video />
         </div>
 
     )

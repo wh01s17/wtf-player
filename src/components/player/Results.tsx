@@ -3,14 +3,16 @@ import React, { useEffect, useState } from 'react'
 import { getResults } from '../../services/youtube'
 import { YouTubeApiResponse, YouTubeVideo } from '@/types/youtube'
 import { Loading } from '../ui/Loading'
+import { useVideoStore } from '@/store/useVideoStore'
 
 export const Results = ({ params }: { params: string }) => {
+    const { setActiveVideoId } = useVideoStore()
     const [results, setResults] = useState<YouTubeVideo[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
 
-    useEffect(() => {
-        const fetchResults = async () => {
+    const fetchResults = async () => {
+        if (params) {
             try {
                 setLoading(true)
                 const data = await getResults(params) as YouTubeApiResponse
@@ -22,10 +24,10 @@ export const Results = ({ params }: { params: string }) => {
                 setLoading(false)
             }
         }
+    }
 
-        if (params) {
-            fetchResults()
-        }
+    useEffect(() => {
+        fetchResults()
     }, [params])
 
     if (loading) return <Loading />
@@ -39,7 +41,11 @@ export const Results = ({ params }: { params: string }) => {
                     : <ul>
                         {
                             results.map(video => (
-                                <li key={video.id.videoId}>
+                                <li
+                                    key={video.id.videoId}
+                                    onClick={() => setActiveVideoId(video.id.videoId)}
+                                    className='cursor-pointer w-fit'
+                                >
                                     {video.snippet.title}
                                 </li>
                             ))

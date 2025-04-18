@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
             params: {
                 part: 'snippet',
                 type: 'video',
-                maxResults: 10,
+                maxResults: 20,
                 q,
                 key: apiKey,
             },

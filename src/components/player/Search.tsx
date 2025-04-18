@@ -2,10 +2,16 @@
 import React, { useState } from 'react'
 import { Results } from './Results'
 import { Button } from '../ui/button'
+import { Input } from '../ui/input'
 
 export const Search = () => {
     const [search, setSearch] = useState('')
     const [queryTerm, setQueryTerm] = useState('')
+
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setQueryTerm('')
+        setSearch(e.target.value)
+    }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -13,24 +19,25 @@ export const Search = () => {
             setQueryTerm(search.trim())
         }
     }
+
     return (
-        <section className='flex flex-col gap-4'>
+        <section className='flex flex-col gap-4 w-1/2'>
             <form onSubmit={handleSubmit} className='flex flex-col gap-2'>
-                <div className="relative w-1/4 max-w-md">
-                    <input
+                <div className="relative w-1/2 max-w-md">
+                    <Input
                         type="text"
                         name="search"
                         id="search"
                         placeholder="Buscar videos..."
                         aria-label="Buscar videos en YouTube"
-                        className='border w-full p-2 rounded-md pl-4'
+                        className='border w-full p-4 rounded-md'
                         value={search}
-                        onChange={(e) => setSearch(e.target.value)}
+                        onChange={handleSearch}
                     />
                 </div>
                 <Button
                     type="submit"
-                    className='w-1/4 p-5 cursor-pointer'
+                    className='w-1/2 p-4 cursor-pointer'
                 >
                     Buscar
                 </Button>
