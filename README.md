@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎵 WTF Player
 
-## Getting Started
+**WTF Player** es un reproductor web ligero construido con **Next.js 15**, que utiliza la **API de YouTube** para reproducir videos de forma optimizada. El proyecto está diseñado con **React 19**, **Tailwind CSS 4**, y aprovecha componentes modernos como **Lite YouTube Embed** para un rendimiento eficiente.
 
-First, run the development server:
+---
+
+## 🚀 Tecnologías y Dependencias
+
+Este proyecto utiliza:
+
+- **Next.js 15.3**
+- **React 19**
+- **Tailwind CSS 4**
+- **Lite YouTube Embed** (`@justinribeiro/lite-youtube`)
+- **Zustand** para manejo de estado global
+- **Lucide React** para íconos SVG
+- **Axios** para peticiones HTTP
+- **Firebase** (para autenticación y/o almacenamiento)
+- **tw-animate-css** para animaciones
+- **clsx** y **class-variance-authority** para manejo de clases condicionales
+
+---
+
+## 📸 Características
+
+✅ Reproduce videos de YouTube de forma eficiente  
+✅ Interfaz minimalista y responsiva  
+✅ Estado global con **Zustand**  
+✅ Animaciones suaves con **tw-animate-css**  
+✅ Iconografía moderna con **Lucide React**
+✅ Configuración moderna con **Next.js 15 + Turbopack**  
+✅ Uso de **Firebase** como backend opcional  
+✅ Totalmente tipado con **TypeScript 5**
+
+---
+
+## 📦 Instalación
+
+Clona el repositorio y sigue estos pasos:
 
 ```bash
+# Instalar dependencias
+npm install
+
+# Levantar el entorno de desarrollo
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
